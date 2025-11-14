@@ -99,9 +99,6 @@
   margin-top: 0;
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .modelContainer::after {
@@ -110,7 +107,7 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 80%;
+  width: 60%;
   height: 1px;
   background: rgba(3, 44, 106, 0.1);
 }
@@ -121,7 +118,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: -0.5rem;
 }
 
 /* Desktop subtitle and heading - hidden on mobile */
@@ -321,7 +318,7 @@
   }
 
   .textContainer {
-    margin-top: 2.5rem;
+    margin-top: 0;
   }
 
   .subtitle {
