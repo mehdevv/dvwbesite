@@ -1,9 +1,8 @@
-import { motion } from 'motion/react';
 import { Linkedin, Instagram, Facebook } from 'lucide-react';
 
 // TikTok Icon Component
 const TikTokIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
   </svg>
 );
@@ -22,7 +21,6 @@ export function Footer() {
       { label: 'Team', href: '#team' },
       { label: 'Join Us', href: '#join' },
       { label: 'Contact', href: '#contact' },
-      { label: 'FAQ', href: '#faq' },
     ],
   };
 
@@ -94,12 +92,18 @@ export function Footer() {
           <p className="text-gray-500 text-sm">
             © {currentYear} Digital Valley. All rights reserved.
           </p>
-          <div className="flex gap-6 text-sm">
-            <a href="#" className="text-gray-500 hover:text-[#032c6a] transition-colors">
-              Privacy Policy
+          <div className="flex flex-col md:flex-row gap-2 md:gap-6 text-sm text-gray-500">
+            <span>Designed and developed by</span>
+            <a href="https://www.pluss.dev" target="_blank" rel="noopener noreferrer" className="hover:text-[#032c6a] transition-colors font-semibold">
+              Kernou Mehdi
             </a>
-            <a href="#" className="text-gray-500 hover:text-[#032c6a] transition-colors">
-              Terms of Service
+            <span className="hidden md:inline">•</span>
+            <a href="https://www.pluss.dev" target="_blank" rel="noopener noreferrer" className="hover:text-[#032c6a] transition-colors">
+              www.pluss.dev
+            </a>
+            <span className="hidden md:inline">•</span>
+            <a href="https://instagram.com/kernoumehdi" target="_blank" rel="noopener noreferrer" className="hover:text-[#032c6a] transition-colors">
+              Instagram
             </a>
           </div>
         </div>
