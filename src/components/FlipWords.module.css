@@ -1,0 +1,19 @@
+.flipWordsContainer {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: baseline;
+  line-height: inherit;
+  position: relative;
+  top: 11.2PX;
+}
+
+.wordContainer {
+  display: inline-block;
+  white-space: nowrap;
+  line-height: inherit;
+}
+
+.letter {
+  display: inline-block;
+}
+

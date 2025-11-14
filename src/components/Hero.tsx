@@ -2,6 +2,8 @@ import { motion } from 'motion/react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { Logo3D } from './Logo3D';
 import { AuroraText } from './AuroraText';
+import { GridBackground } from './GridBackground';
+import { FlipWords } from './FlipWords';
 import styles from './Hero.module.css';
 
 export function Hero() {
@@ -39,6 +41,9 @@ export function Hero() {
         </motion.h1>
       </div>
 
+      {/* Grid Background */}
+      <GridBackground />
+      
       {/* Animated Gradient Background */}
       <div className={styles.gradientBackground}>
         <motion.div
@@ -154,7 +159,13 @@ export function Hero() {
               transition={{ delay: 0.6, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className={styles.description}
             >
-              Where innovation meets opportunity. Join our community of tech enthusiasts and entrepreneurs shaping the future.
+              Where we{' '}
+              <FlipWords 
+                words={["innovate", "create", "build", "grow", "excel", "succeed", "thrive", "lead"]}
+                duration={3000}
+                className={styles.flipWords}
+              />
+              . Join our community of tech enthusiasts and entrepreneurs shaping the future.
             </motion.p>
 
             <motion.div

@@ -10,7 +10,7 @@ import { Footer } from './components/Footer';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white" style={{ overflowX: 'hidden', width: '100%' }}>
       <Navigation />
       <Hero />
       <About />
