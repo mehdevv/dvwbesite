@@ -7,6 +7,13 @@
   top: 11.2PX;
 }
 
+/* Mobile - move up by 5px */
+@media (max-width: 767px) {
+  .flipWordsContainer {
+    top: 10px;
+  }
+}
+
 .wordContainer {
   display: inline-block;
   white-space: nowrap;
