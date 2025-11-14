@@ -1,5 +1,12 @@
 import { motion } from 'motion/react';
-import { Linkedin, Twitter, Instagram, Facebook } from 'lucide-react';
+import { Linkedin, Instagram, Facebook } from 'lucide-react';
+
+// TikTok Icon Component
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+  </svg>
+);
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -21,9 +28,9 @@ export function Footer() {
 
   const socialLinks = [
     { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
     { icon: Instagram, href: '#', label: 'Instagram' },
     { icon: Facebook, href: '#', label: 'Facebook' },
+    { icon: TikTokIcon, href: '#', label: 'TikTok' },
   ];
 
   return (
@@ -40,17 +47,25 @@ export function Footer() {
               entrepreneurial excellence.
             </p>
             <div className="flex gap-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="group relative w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center transition-all duration-300 overflow-hidden"
-                  aria-label={social.label}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#032c6a] via-[#0a4fb5] to-[#032c6a] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <social.icon className="w-5 h-5 text-[#032c6a] group-hover:text-white transition-colors relative z-10" />
-                </a>
-              ))}
+              {socialLinks.map((social) => {
+                const IconComponent = social.icon;
+                const isTikTok = social.label === 'TikTok';
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    className="group relative w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center transition-all duration-300 overflow-hidden"
+                    aria-label={social.label}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#032c6a] via-[#0a4fb5] to-[#032c6a] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    {isTikTok ? (
+                      <IconComponent className="w-5 h-5 text-[#032c6a] group-hover:text-white transition-colors relative z-10" />
+                    ) : (
+                      <IconComponent className="w-5 h-5 text-[#032c6a] group-hover:text-white transition-colors relative z-10" />
+                    )}
+                  </a>
+                );
+              })}
             </div>
           </div>
 

@@ -1,0 +1,43 @@
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Desktop - 3 on top, 2 centered on bottom */
+@media (min-width: 1024px) {
+  .teamGrid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* First 3 members span 2 columns each (3x2 = 6 columns) */
+  .teamMember:nth-child(1),
+  .teamMember:nth-child(2),
+  .teamMember:nth-child(3) {
+    grid-column: span 2;
+  }
+
+  /* 4th member: starts at column 1.5 (centered), spans 2 columns */
+  .teamMember:nth-child(4) {
+    grid-column: 2 / 4;
+  }
+
+  /* 5th member: starts at column 3.5 (centered), spans 2 columns */
+  .teamMember:nth-child(5) {
+    grid-column: 4 / 6;
+  }
+}
+

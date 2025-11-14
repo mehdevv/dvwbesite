@@ -1,6 +1,7 @@
 import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
 import { Linkedin, Mail } from 'lucide-react';
+import styles from './Team.module.css';
 
 export function Team() {
   const ref = useRef(null);
@@ -8,24 +9,29 @@ export function Team() {
 
   const team = [
     {
-      name: 'Alex Johnson',
+      name: 'Ritadj Massaadia',
       role: 'President',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
+      image: '/images/ritadj.png',
     },
     {
-      name: 'Sarah Chen',
-      role: 'VP of Technology',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop',
+      name: 'Kernou Mehdi',
+      role: 'VP & Web Developer',
+      image: '/images/mehdi.png',
     },
     {
-      name: 'Marcus Williams',
-      role: 'VP of Innovation',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop',
+      name: 'Assassi Nouha',
+      role: 'Marketing Manager',
+      image: '/images/nouha.png',
     },
     {
-      name: 'Emily Rodriguez',
-      role: 'Events Director',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop',
+      name: 'Amrouche Dounya',
+      role: 'HR Manager & Graphic Designer',
+      image: '/images/dounya.png',
+    },
+    {
+      name: 'Khenouf Nour',
+      role: 'Respo Relation Extérieur',
+      image: '/images/KNour.png',
     },
   ];
 
@@ -53,14 +59,14 @@ export function Team() {
         </motion.div>
 
         {/* Team Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className={styles.teamGrid}>
           {team.map((member, index) => (
             <motion.div
               key={member.name}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group"
+              className={`group ${styles.teamMember}`}
             >
               <div className="relative bg-white border border-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300">
                 {/* Image */}
@@ -93,11 +99,11 @@ export function Team() {
                 </div>
 
                 {/* Info */}
-                <div className="p-6 text-center">
-                  <h3 className="text-xl font-bold text-[#032c6a] mb-1">
+                <div className="p-4 md:p-5 text-center">
+                  <h3 className="text-lg md:text-xl font-bold text-[#032c6a] mb-1">
                     {member.name}
                   </h3>
-                  <p className="text-gray-600">{member.role}</p>
+                  <p className="text-sm md:text-base text-gray-600">{member.role}</p>
                 </div>
               </div>
             </motion.div>
