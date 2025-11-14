@@ -36,14 +36,14 @@ export function Team() {
   ];
 
   return (
-    <section id="team" className="py-32 bg-gray-50" ref={ref}>
+    <section id="team" className="py-16 md:py-24 lg:py-32 bg-gray-50" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-12 md:mb-16 lg:mb-20"
         >
           <span className="text-sm tracking-[0.3em] text-gray-500 uppercase mb-4 block">
             Leadership
@@ -110,9 +110,6 @@ export function Team() {
           ))}
         </div>
       </div>
-
-      {/* Bottom divider */}
-      <div className="mt-32 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
     </section>
   );
 }

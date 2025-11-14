@@ -16,27 +16,14 @@
   padding-bottom: 1rem;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(3, 44, 106, 0.3) transparent;
+  scrollbar-width: none; /* Hide scrollbar on Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar on IE and Edge */
   width: 100%;
   scroll-behavior: smooth;
 }
 
 .programsContainer::-webkit-scrollbar {
-  height: 6px;
-}
-
-.programsContainer::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.programsContainer::-webkit-scrollbar-thumb {
-  background-color: rgba(3, 44, 106, 0.3);
-  border-radius: 3px;
-}
-
-.programsContainer::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(3, 44, 106, 0.5);
+  display: none; /* Hide scrollbar on Chrome, Safari, and Opera */
 }
 
 .programCard {

@@ -196,9 +196,6 @@ export function Events() {
           </div>
         </div>
       </div>
-
-      {/* Bottom divider */}
-      <div className="mt-12 md:mt-20 lg:mt-32 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
     </section>
   );
 }
