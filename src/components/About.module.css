@@ -1,0 +1,150 @@
+.membersImageContainer {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transition: all 0.5s ease;
+}
+
+.membersImageContainer:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.membersImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 2rem;
+  transition: transform 0.5s ease;
+}
+
+.membersImageContainer:hover .membersImage {
+  transform: scale(1.05);
+}
+
+.membersImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.05), transparent);
+  border-radius: 2rem;
+  pointer-events: none;
+}
+
+/* Values Section - Horizontal Scroll on Mobile */
+.valuesWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.valuesContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(3, 44, 106, 0.3) transparent;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+.valuesContainer::-webkit-scrollbar {
+  height: 6px;
+}
+
+.valuesContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.valuesContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(3, 44, 106, 0.3);
+  border-radius: 3px;
+}
+
+.valuesContainer::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(3, 44, 106, 0.5);
+}
+
+.valueCard {
+  flex: 0 0 280px;
+  text-align: center;
+  scroll-snap-align: start;
+  min-width: 280px;
+}
+
+.scrollButton {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid rgba(3, 44, 106, 0.2);
+  color: #032c6a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.scrollButtonsContainer {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrollButton:hover:not(:disabled) {
+  background-color: #032c6a;
+  color: white;
+  border-color: #032c6a;
+  box-shadow: 0 4px 8px rgba(3, 44, 106, 0.2);
+  transform: scale(1.05);
+}
+
+.scrollButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Tablet and up - Grid layout */
+@media (min-width: 768px) {
+  .valuesContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    overflow-x: visible;
+    overflow-y: visible;
+    padding-bottom: 0;
+    scroll-snap-type: none;
+  }
+
+  .valueCard {
+    flex: none;
+    min-width: auto;
+  }
+
+  .valuesWrapper {
+    gap: 0;
+  }
+
+  .scrollButton {
+    display: none;
+  }
+}
+
+/* Desktop - 4 columns */
+@media (min-width: 1024px) {
+  .valuesContainer {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+

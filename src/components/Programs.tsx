@@ -1,10 +1,49 @@
 import { motion, useInView } from 'motion/react';
-import { useRef } from 'react';
-import { Code2, Rocket, BookOpen, Trophy, Briefcase, Cpu } from 'lucide-react';
+import { useRef, useState, useEffect } from 'react';
+import { Code2, Rocket, BookOpen, Trophy, Briefcase, Cpu, ChevronLeft, ChevronRight } from 'lucide-react';
+import styles from './Programs.module.css';
 
 export function Programs() {
   const ref = useRef(null);
+  const programsContainerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScrollButtons = () => {
+    if (programsContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = programsContainerRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  useEffect(() => {
+    const container = programsContainerRef.current;
+    if (container) {
+      checkScrollButtons();
+      container.addEventListener('scroll', checkScrollButtons);
+      window.addEventListener('resize', checkScrollButtons);
+      return () => {
+        container.removeEventListener('scroll', checkScrollButtons);
+        window.removeEventListener('resize', checkScrollButtons);
+      };
+    }
+  }, []);
+
+  const scrollLeft = () => {
+    if (programsContainerRef.current) {
+      const cardWidth = 320 + 32; // card width + gap
+      programsContainerRef.current.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (programsContainerRef.current) {
+      const cardWidth = 320 + 32; // card width + gap
+      programsContainerRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    }
+  };
 
   const programs = [
     {
@@ -46,7 +85,7 @@ export function Programs() {
   ];
 
   return (
-    <section id="programs" className="py-32 bg-gray-50" ref={ref}>
+    <section id="programs" className="py-16 md:py-24 lg:py-32 bg-gray-50" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <motion.div
@@ -69,14 +108,15 @@ export function Programs() {
         </motion.div>
 
         {/* Programs Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className={styles.programsWrapper}>
+          <div ref={programsContainerRef} className={styles.programsContainer}>
           {programs.map((program, index) => (
             <motion.div
               key={program.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative bg-white p-10 rounded-lg border border-gray-100 hover:shadow-lg transition-all duration-300 group overflow-hidden"
+              className={`${styles.programCard} group`}
             >
               {/* Animated gradient overlay on hover */}
               <motion.div
@@ -133,12 +173,31 @@ export function Programs() {
                 </a>
               </div>
             </motion.div>
-          ))}
+            ))}
+          </div>
+          <div className={styles.scrollButtonsContainer}>
+            <button
+              onClick={scrollLeft}
+              disabled={!canScrollLeft}
+              className={styles.scrollButton}
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={scrollRight}
+              disabled={!canScrollRight}
+              className={styles.scrollButton}
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Bottom divider */}
-      <div className="mt-32 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+      <div className="mt-12 md:mt-20 lg:mt-32 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
     </section>
   );
 }

@@ -1,6 +1,7 @@
 import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
 import { Target, Lightbulb, Users, Award } from 'lucide-react';
+import styles from './About.module.css';
 
 export function About() {
   const ref = useRef(null);
@@ -30,7 +31,7 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-32 bg-white" ref={ref}>
+    <section id="about" className="py-16 md:py-24 lg:py-32 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <motion.div
@@ -53,7 +54,7 @@ export function About() {
         </motion.div>
 
         {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-20 items-center mb-24">
+        <div className="grid lg:grid-cols-2 gap-20 items-center mb-12 md:mb-16 lg:mb-24">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -64,54 +65,37 @@ export function About() {
             </h3>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                Founded on the principles of innovation and collaboration, Digital Valley has grown 
-                into a premier community where students transform ambitious ideas into reality.
+                Founded on October 3rd, 2023, Digital Valley Club is a scientific community focused on driving 
+                innovation in fintech. From our early days, we have grown into a leading student hub where 
+                creativity, technology, and entrepreneurial thinking come together.
               </p>
               <p>
-                We provide a sophisticated platform that bridges the gap between academic excellence 
-                and real-world entrepreneurship, offering unparalleled resources, mentorship, and 
-                networking opportunities.
+                We've organized major initiatives like DigiTrade, bringing together experts and students to 
+                explore the future of financial technology, and we invest in talent through our LevelUp program, 
+                offering valuable bootcamps that strengthen technical and professional skills.
               </p>
               <p>
-                Our members are selected for their passion, dedication, and potential to make a 
-                meaningful impact in the digital world.
+                Digital Valley bridges the gap between academic excellence and real-world application, providing 
+                members with mentorship, resources, and a collaborative environment to develop impactful ideas. 
+                Our members are selected for their passion, dedication, and potential to shape the digital world.
               </p>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="grid grid-cols-2 gap-6"
+            initial={{ opacity: 0, x: 30, scale: 0.95 }}
+            animate={isInView ? { opacity: 1, x: 0, scale: 1 } : {}}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="relative"
           >
-            <div className="group relative bg-white border border-gray-100 p-8 rounded-lg shadow-sm hover:shadow-md transition-all overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#032c6a]/5 via-[#0a4fb5]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative z-10">
-                <div className="text-4xl font-bold text-[#032c6a] mb-2">500+</div>
-                <div className="text-gray-600">Members</div>
-              </div>
-            </div>
-            <div className="group relative bg-white border border-gray-100 p-8 rounded-lg shadow-sm hover:shadow-md transition-all overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#032c6a]/5 via-[#0a4fb5]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative z-10">
-                <div className="text-4xl font-bold text-[#032c6a] mb-2">50+</div>
-                <div className="text-gray-600">Events Yearly</div>
-              </div>
-            </div>
-            <div className="group relative bg-white border border-gray-100 p-8 rounded-lg shadow-sm hover:shadow-md transition-all overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#032c6a]/5 via-[#0a4fb5]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative z-10">
-                <div className="text-4xl font-bold text-[#032c6a] mb-2">100+</div>
-                <div className="text-gray-600">Projects</div>
-              </div>
-            </div>
-            <div className="group relative bg-white border border-gray-100 p-8 rounded-lg shadow-sm hover:shadow-md transition-all overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#032c6a]/5 via-[#0a4fb5]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative z-10">
-                <div className="text-4xl font-bold text-[#032c6a] mb-2">30+</div>
-                <div className="text-gray-600">Partners</div>
-              </div>
+            <div className={styles.membersImageContainer}>
+              <img
+                src="/images/members.png"
+                alt="Digital Valley Club Members"
+                className={styles.membersImage}
+                loading="lazy"
+              />
+              <div className={styles.membersImageOverlay} />
             </div>
           </motion.div>
         </div>
@@ -125,14 +109,15 @@ export function About() {
           <h3 className="text-3xl font-bold text-[#032c6a] mb-12 text-center">
             Our Values
           </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className={styles.valuesWrapper}>
+            <div className={styles.valuesContainer}>
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
-                className="text-center group"
+                className={`${styles.valueCard} group`}
               >
                 <div className="relative inline-flex items-center justify-center w-16 h-16 bg-white border border-[#032c6a]/20 rounded-lg mb-6 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-[#032c6a] via-[#0a4fb5] to-[#032c6a] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -146,12 +131,13 @@ export function About() {
                 </p>
               </motion.div>
             ))}
+            </div>
           </div>
         </motion.div>
       </div>
 
       {/* Bottom divider */}
-      <div className="mt-32 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+      <div className="mt-12 md:mt-20 lg:mt-32 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
     </section>
   );
 }
